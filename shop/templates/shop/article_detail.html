@@ -1,0 +1,16 @@
+<h1>{{ article.title }}</h1>
+<p>{{ article.description }}</p>
+
+<h2>Commentaires</h2>
+<ul>
+    {% for comment in article.comments.all %}
+    <li><strong>{{ comment.user.username }}</strong>: {{ comment.content }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Ajouter un commentaire</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Commenter</button>
+</form>
